@@ -15,6 +15,7 @@
     typing.style.display = "none";
     message.style.fontSize = "400px";
     start_button.addEventListener("click", celebrateMessage);
+
     function celebrateMessage() {
         document.body.style.backgroundColor = "black";
         typing.style.display = "block";
@@ -55,7 +56,6 @@
           speed:70,
           waitUntilVisible: true
         })
-        .empty()
         .type("母")
         .type("の")
         .type("日")
