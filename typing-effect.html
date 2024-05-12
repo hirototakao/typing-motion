@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing-motion</title>
+  <script src="https://unpkg.com/typeit@8.8.3/dist/index.umd.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const typing = document.getElementById("typing");
+    const message = document.getElementById("text");
+    const start_button = document.getElementById("start-button");
+    const audio = new Audio("./sound.mp3");
+    console.log(typing);
+    typing.style.display = "none";
+    message.style.fontSize = "400px";
+    start_button.addEventListener("click", celebrateMessage);
+    function celebrateMessage() {
+        document.body.style.backgroundColor = "black";
+        typing.style.display = "block";
+        start_button.style.display = "none";
+        setTimeout(async() => {
+          audio.play();
+          new TypeIt("#text", {
+          speed:100,
+          waitUntilVisible: true
+        })
+        .type("母")
+        .delete(1)
+        .type("の")
+        .delete(1)
+        .type("日")
+        .delete(1)
+        .type("、")
+        .delete(1)
+        .type("お")
+        .delete(1)
+        .type("め")
+        .delete(1)
+        .type("で")
+        .delete(1)
+        .type("と")
+        .delete(1)
+        .type("う")
+        .delete(1)
+        .type("。")
+        .empty()
+        .go();
+        audio.pause();
+      }, 2000);
+      setTimeout(() => {
+        message.style.marginTop = "300px";
+        message.style.fontSize = "40px";
+        new TypeIt("#text", {
+          speed:70,
+          waitUntilVisible: true
+        })
+        .empty()
+        .type("母")
+        .type("の")
+        .type("日")
+        .type("、")
+        .type("お")
+        .type("め")
+        .type("で")
+        .type("と")
+        .type("う")
+        .type("。")
+        .go();
+      }, 4000);
+   }
+    });
+  </script>
+</head>
+<body>
+  <button id="start-button">Click it</button>
+  <div style="color:white; text-align:center;" id="typing">
+     <p id="text"></p>
+  </div>
+  <style>
+    #start-button {
+      position:fixed;
+      top:50%;
+      left:47%;
+      background-color:red;
+      color:white;
+      font-size:30px;
+      border-radius:5px;
+      padding:3px 22px 3px 22px;
+    }
+    #text {
+      margin:0 auto;
+    }
+  </style>
+</body>
+</html>
